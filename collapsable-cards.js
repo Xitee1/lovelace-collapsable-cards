@@ -237,12 +237,11 @@ class CollapsableCards extends HTMLElement {
         align-items: center;
         width: 100%;
         border-radius: var(--ha-card-border-radius, 4px);
-	cursor: pointer;
+		cursor: pointer;
         ${this._config.buttonStyle || ''}
       }
       .toggle-button-${this.id}:focus {
         outline: none;
-        background-color: var(--divider-color);
       }
 
       .card-list-${this.id} {
@@ -287,8 +286,8 @@ customElements.define('collapsable-cards', CollapsableCards);
 
 window.customCards = window.customCards || [];
 window.customCards.push({
-							type: "collapsable-cards",
-							name: "Collapsable Card",
-							preview: false,
-							description: "The Collapsable Card allows you to hide other cards behind a dropdown toggle."
-						});
+	type: "collapsable-cards",
+	name: "Collapsable Card",
+	preview: false,
+	description: "The Collapsable Card allows you to hide other cards behind a dropdown toggle."
+});
