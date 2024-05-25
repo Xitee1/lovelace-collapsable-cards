@@ -237,6 +237,7 @@ class CollapsableCards extends HTMLElement {
         align-items: center;
         width: 100%;
         border-radius: var(--ha-card-border-radius, 4px);
+	cursor: pointer;
         ${this._config.buttonStyle || ''}
       }
       .toggle-button-${this.id}:focus {
