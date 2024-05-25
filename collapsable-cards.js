@@ -122,7 +122,7 @@ class CollapsableCards extends HTMLElement {
 	}
 
 	styleCard(isToggled) {
-		this.cardList.classList[isToggled ? 'add' : 'remove']('is-toggled')
+		this.cardList.style.maxHeight = isToggled ? this.cardList.scrollHeight + "px" : null;
 		this.icon.setAttribute('icon', isToggled ? 'mdi:chevron-up' : 'mdi:chevron-down')
 	}
 
@@ -226,58 +226,37 @@ class CollapsableCards extends HTMLElement {
 
 	getStyles() {
 		return `
-      .toggle-button-${this.id} {
-        color: var(--primary-text-color);
-        text-align: left;
-        background: none;
-        border: none;
-        margin: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        border-radius: var(--ha-card-border-radius, 4px);
-	cursor: pointer;
-        ${this._config.buttonStyle || ''}
-      }
-      .toggle-button-${this.id}:focus {
-        outline: none;
-        background-color: var(--divider-color);
-      }
+		.toggle-button-${this.id} {
+			color: var(--primary-text-color);
+			text-align: left;
+			background: none;
+			border: none;
+			margin: 0;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+			border-radius: var(--ha-card-border-radius, 4px);
+			cursor: pointer;
+			${this._config.buttonStyle || ''}
+      	}
+      	.toggle-button-${this.id}:focus {
+        	outline: none;
+      	}
 
-      .card-list-${this.id} {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        border: 0;
-        white-space: nowrap;
-      }
+		.card-list-${this.id} {
+	  		max-height: 0;
+	  		overflow: hidden;
+	  		transition: max-height .3s ease;
+		}
+		
+      	.toggle-button__icon-${this.id} {
+        	color: var(--paper-item-icon-color, #aaa);
+        }
 
-      .card-list-${this.id}.is-toggled {
-        position: unset;
-        width: unset;
-        height: unset;
-        margin: unset;
-        padding: unset;
-        overflow: unset;
-        clip: unset;
-        clip-path: unset;
-        border: unset;
-        white-space: unset;
-      }
-
-      .toggle-button__icon-${this.id} {
-        color: var(--paper-item-icon-color, #aaa);
-      }
-
-      .type-custom-collapsable-cards {
-        background: transparent;
-      }
+      	.type-custom-collapsable-cards {
+        	background: transparent;
+      	}
     `;
 	}
 
@@ -287,8 +266,8 @@ customElements.define('collapsable-cards', CollapsableCards);
 
 window.customCards = window.customCards || [];
 window.customCards.push({
-							type: "collapsable-cards",
-							name: "Collapsable Card",
-							preview: false,
-							description: "The Collapsable Card allows you to hide other cards behind a dropdown toggle."
-						});
+	type: "collapsable-cards",
+	name: "Collapsable Card",
+	preview: false,
+	description: "The Collapsable Card allows you to hide other cards behind a dropdown toggle."
+});
