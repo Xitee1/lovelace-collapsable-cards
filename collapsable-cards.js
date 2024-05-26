@@ -229,7 +229,7 @@ class CollapsableCards extends HTMLElement {
 		.toggle-button-${this.id} {
 			color: var(--primary-text-color);
 			text-align: left;
-			background: none;
+			background: var(--ha-card-background,var(--card-background-color,#fff));
 			border: none;
 			margin: 0;
 			display: flex;
